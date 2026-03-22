@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SE_Exersize1
 {
-    public class BookEdition: IEquatable<BookEdition>
+    public class BookEdition: IEquatable<BookEdition>, IComparable<BookEdition>
     {
         public string Isbn { get; }
         public string Title { get; }
@@ -73,6 +73,116 @@ namespace SE_Exersize1
             }
 
             return !book1.Equals(book2);
+        }
+
+        public int CompareTo(BookEdition? other)
+        {
+            if (other == null)
+            {
+                throw new ArgumentNullException(nameof(other));
+            }
+
+            if (other.Title != this.Title)
+            {
+                return other.Title.CompareTo(this.Title);
+            }
+
+            if (other.Author != this.Author)
+            {
+                return other.Author.CompareTo(this.Author);
+            }
+
+            if (other.EditionNumber != this.EditionNumber)
+            {
+                return other.EditionNumber.CompareTo(this.EditionNumber);
+            }
+
+            if (other.PublicationYear != this.PublicationYear)
+            {
+                return other.PublicationYear.CompareTo(this.PublicationYear);
+            }
+
+            return 0;
+        }
+
+        public static bool operator >(BookEdition? book1, BookEdition? book2)
+        {
+            if (book1 == null && book2 == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (book1 == null || book2 == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (book1.CompareTo(book2) > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool operator <(BookEdition? book1, BookEdition? book2)
+        {
+            if (book1 == null && book2 == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (book1 == null || book2 == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (book1.CompareTo(book2) < 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool operator >=(BookEdition? book1, BookEdition? book2)
+        {
+            if (book1 == null && book2 == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (book1 == null || book2 == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (book1.CompareTo(book2) >= 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool operator <=(BookEdition? book1, BookEdition? book2)
+        {
+            if (book1 == null && book2 == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (book1 == null || book2 == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (book1.CompareTo(book2) <= 0)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public override bool Equals(object? obj)
