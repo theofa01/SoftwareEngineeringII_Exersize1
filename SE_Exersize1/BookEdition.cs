@@ -45,6 +45,36 @@ namespace SE_Exersize1
             return false;
         }
 
+        public static bool operator ==(BookEdition? book1, BookEdition? book2)
+        {
+            if (book1 == null && book2 == null)
+            {
+                return true;
+            }
+
+            if (book1 == null || book2 == null)
+            {
+                return false;
+            }
+
+            return book1.Equals(book2);
+        }
+
+        public static bool operator !=(BookEdition? book1, BookEdition? book2)
+        {
+            if (book1 == null && book2 == null)
+            {
+                return false;
+            }
+
+            if (book1 == null || book2 == null)
+            {
+                return true;
+            }
+
+            return !book1.Equals(book2);
+        }
+
         public override bool Equals(object? obj)
         {
             if (obj is not BookEdition)
