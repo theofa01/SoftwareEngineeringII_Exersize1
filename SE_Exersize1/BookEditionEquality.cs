@@ -8,12 +8,12 @@ namespace SE_Exersize1
     {
         public bool Equals(BookEdition? x, BookEdition? y)
         {
-            if (x == null && y == null) //If both objects are null, they are considered equal
+            if (x is null && y is null) //If both objects are null, they are considered equal
             {
                 return true;
             }
 
-            if (x == null || y == null) //If one of the objects is null and the other is not, they are not equal
+            if (x is null || y is null) //If one of the objects is null and the other is not, they are not equal
             {
                 return false;
             }
@@ -28,7 +28,7 @@ namespace SE_Exersize1
 
         public int GetHashCode(BookEdition obj)
         {
-            if (obj == null) //Null checking 
+            if (obj is null) //Null checking 
             {
                 throw new ArgumentNullException(nameof(obj));
             }

@@ -8,12 +8,12 @@ namespace SE_Exersize1
     {
         public int Compare(BookEdition? x, BookEdition? y)
         {
-            if (x == null && y == null) //The comparison cannot happen if both are null
+            if (x is null && y is null) //The comparison cannot happen if both are null
             {
                 throw new ArgumentNullException(nameof(x));
             }
 
-            if (x == null || y == null) //The comparison cannot happen if one of them is null
+            if (x is null || y is null) //The comparison cannot happen if one of them is null
             {
                 throw new ArgumentNullException();
             }

@@ -1,5 +1,4 @@
-﻿
-namespace SE_Exersize1
+﻿namespace SE_Exersize1
 {
     public class BookEdition: IEquatable<BookEdition>, IComparable<BookEdition>
     {
@@ -22,13 +21,12 @@ namespace SE_Exersize1
 
         public bool Equals(BookEdition? other)
         {
-            if (other == null) //if the other object is null, then they are not equal
+            if (other is null) //if the other object is null, then they are not equal
             {
                 return false;
             }
 
-            if (this == other //if the reference is the same, then they are equal
-             )
+            if (ReferenceEquals(this, other)) //if the reference is the same, then they are equal
             {
                 return true;
             }
@@ -46,12 +44,12 @@ namespace SE_Exersize1
 
         public static bool operator ==(BookEdition? book1, BookEdition? book2)
         {
-            if (book1 == null && book2 == null) //if both objects are null, then they are equal
+            if (book1 is null && book2 is null) //if both objects are null, then they are equal
             {
                 return true;
             }
 
-            if (book1 == null || book2 == null) //if one of the objects is null, then they are not equal
+            if (book1 is null || book2 is null) //if one of the objects is null, then they are not equal
             {
                 return false;
             }
@@ -62,13 +60,13 @@ namespace SE_Exersize1
 
         public static bool operator !=(BookEdition? book1, BookEdition? book2)
         {
-            if (book1 == null && book2 == null) //if both objects are null, then they are equal, but we are checking
+            if (book1 is null && book2 is null) //if both objects are null, then they are equal, but we are checking
                                                 //for inequality, so we return false
             {
                 return false;
             }
 
-            if (book1 == null || book2 == null) //if one of the objects is null, then they are not equal,
+            if (book1 is null || book2 is null) //if one of the objects is null, then they are not equal,
                                                 //but we are checking for inequality, so we return true
             {
                 return true;
@@ -80,7 +78,7 @@ namespace SE_Exersize1
 
         public int CompareTo(BookEdition? other)
         {
-            if (other == null)
+            if (other is null)
             {
                 throw new ArgumentNullException(nameof(other)); //The comparison cannot be done if
                                                                 //the other object is null
@@ -88,41 +86,35 @@ namespace SE_Exersize1
 
             if (other.Title != this.Title)
             {
-                return other.Title.CompareTo(this.Title);
+                return this.Title.CompareTo(other.Title);
             }
 
             if (other.Author != this.Author)
             {
-                return other.Author.CompareTo(this.Author);
+                return this.Author.CompareTo(other.Author);
             }
 
             if (other.EditionNumber != this.EditionNumber)
             {
-                return other.EditionNumber.CompareTo(this.EditionNumber);
+                return this.EditionNumber.CompareTo(other.EditionNumber);
             }
 
             if (other.PublicationYear != this.PublicationYear)
             {
-                return other.PublicationYear.CompareTo(this.PublicationYear);
+                return this.PublicationYear.CompareTo(other.PublicationYear);
             }
-
-            //checks based on the order of the properties.
-            //if some of the properties are different, then we return the result
-            //of the comparison of those properties.
-            //if the result is zero that does not mean that the objects are equal,
-            //it just means that the properties that we compared are equal,
 
             return 0;
         }
 
         public static bool operator >(BookEdition? book1, BookEdition? book2)
         {
-            if (book1 == null && book2 == null) //the comparison cannot be done if both objects are null
+            if (book1 is null && book2 is null) //the comparison cannot be done if both objects are null
             {
                 throw new ArgumentNullException();
             }
 
-            if (book1 == null || book2 == null) //the comparison cannot be done if one of the objects is null
+            if (book1 is null || book2 is null) //the comparison cannot be done if one of the objects is null
             {
                 throw new ArgumentNullException();
             }
@@ -137,12 +129,12 @@ namespace SE_Exersize1
 
         public static bool operator <(BookEdition? book1, BookEdition? book2)
         {
-            if (book1 == null && book2 == null) //the comparison cannot be done if both objects are null
+            if (book1 is null && book2 is null) //the comparison cannot be done if both objects are null
             {
                 throw new ArgumentNullException();
             }
 
-            if (book1 == null || book2 == null) //the comparison cannot be done if one of the objects is null
+            if (book1 is null || book2 is null) //the comparison cannot be done if one of the objects is null
             {
                 throw new ArgumentNullException();
             }
@@ -157,12 +149,12 @@ namespace SE_Exersize1
 
         public static bool operator >=(BookEdition? book1, BookEdition? book2)
         {
-            if (book1 == null && book2 == null) //the comparison cannot be done if both objects are null
+            if (book1 is null && book2 is null) //the comparison cannot be done if both objects are null
             {
                 throw new ArgumentNullException();
             }
 
-            if (book1 == null || book2 == null) //the comparison cannot be done if one of the objects is null
+            if (book1 is null || book2 is null) //the comparison cannot be done if one of the objects is null
             {
                 throw new ArgumentNullException();
             }
@@ -177,12 +169,12 @@ namespace SE_Exersize1
 
         public static bool operator <=(BookEdition? book1, BookEdition? book2)
         {
-            if (book1 == null && book2 == null) //the comparison cannot be done if both objects are null
+            if (book1 is null && book2 is null) //the comparison cannot be done if both objects are null
             {
                 throw new ArgumentNullException();
             }
 
-            if (book1 == null || book2 == null) //the comparison cannot be done if one of the objects is null
+            if (book1 is null || book2 is null) //the comparison cannot be done if one of the objects is null
             {
                 throw new ArgumentNullException();
             }
@@ -230,11 +222,11 @@ namespace SE_Exersize1
 
         public override string ToString()
         {
-            return $"Isbn: {this.Isbn}" +
-                   $"Title: {this.Title}" +
-                   $"Author: {this.Author}" +
-                   $"EditionNumber: {this.EditionNumber}" +
-                   $"PublicationYear: {this.PublicationYear}" +
+            return $"Isbn: {this.Isbn} " +
+                   $"Title: {this.Title} " +
+                   $"Author: {this.Author} " +
+                   $"EditionNumber: {this.EditionNumber} " +
+                   $"PublicationYear: {this.PublicationYear} " +
                    $"DecimalPrice: {this.DecimalPrice}";
         }
     }
