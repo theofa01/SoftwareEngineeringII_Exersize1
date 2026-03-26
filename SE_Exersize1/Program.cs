@@ -68,8 +68,9 @@
             Console.WriteLine("Books in the SortSet with the alternative comparer class: ");
             Console.WriteLine("------------------------");
             PrintBooks(bookSortSetAlternative.ToList());
-            Console.WriteLine(); //same items with the HashSets only this time we have alphabetical
-            //order because we use SortedSet
+            Console.WriteLine(); //same items with the HashSets, only this time the items are sorted
+            //by each comparer because we use SortedSet. Again, the order it's
+            //different with each comparator due to the different sorting criteria
 
             Dictionary<BookEdition, String> dictBooksDefault = new Dictionary<BookEdition, String>();
             Dictionary<BookEdition, String> dictBooksAlternative =
@@ -96,7 +97,14 @@
             Console.WriteLine("Books in the Dictionary (keys, values) with the alternative equality class");
             Console.WriteLine("------------------------");
             PrintBooks(dictBooksAlternative);
-            Console.WriteLine();
+            Console.WriteLine(); //In the case of the Dictionary, depending on the
+                                 //sorting criteria, we can see that a
+                                 //title of a book as value can appear twice in
+                                 //the Dictionary if two version of the same book are
+                                 //different based on the used equality class.
+                                 //In this case, the title Salem's Lot appears twice
+                                 //with the default equality class due to
+                                 //the different editions of the book. 
         }
 
         private static void PrintBooks(List<BookEdition> books)
