@@ -31,15 +31,11 @@
                 return true;
             }
 
-            if (other.Isbn == this.Isbn && other.Title == this.Title && other.Author == this.Author
-                && other.EditionNumber == this.EditionNumber
-                && other.PublicationYear == this.PublicationYear) //if all the properties that are part of the equality
-                                                                  //check are the same, then they are equal
-            {
-                return true;
-            }
-
-            return false;
+            return other.Isbn == this.Isbn && other.Title == this.Title && other.Author == this.Author
+                   && other.EditionNumber == this.EditionNumber
+                   && other.PublicationYear == this.PublicationYear; 
+                                                                        //if all the properties that are part of the equality
+                                                                     //check are the same, then they are equal
         }
 
         public static bool operator ==(BookEdition? book1, BookEdition? book2)

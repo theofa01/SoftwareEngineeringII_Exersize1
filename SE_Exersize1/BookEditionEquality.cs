@@ -18,12 +18,8 @@ namespace SE_Exersize1
                 return false;
             }
 
-            if (x.Isbn == y.Isbn) //In this comparer the checking is based only on the Isbn
-            {
-                return true;
-            }
-
-            return false;
+            return x.Isbn == y.Isbn;
+            //In this comparer the checking is based only on the Isbn
         }
 
         public int GetHashCode(BookEdition obj)
